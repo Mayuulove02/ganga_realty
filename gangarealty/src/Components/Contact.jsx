@@ -61,7 +61,7 @@ const Contact = () => {
         <section id='contact' className="bg-[#F8F8F8] p-12 text-center italic" 
             style={{ backgroundImage: `url(${backgroundImage})`, backgroundPosition: "center" }}
         >
-            <p className="text-lg py-2 font-semibold transition duration-300 mt-4 text-[#c27b7f] md:text-base sm:text-sm">Ganga Realty Fusion 85</p>
+            <p className="text-lg py-2 font-semibold transition duration-300 mt-4 text-[#fbad5a] md:text-base sm:text-sm">Ganga Realty Fusion 85</p>
             <h2 className="text-3xl font-bold text-center mb-2 text-white md:text-2xl sm:text-xl">Contact Us</h2>
             <div className="relative max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between w-full h-full mt-12">
                 <div className="mr-2">

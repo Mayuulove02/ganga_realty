@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, useDisclosure } from '@chakra-ui/react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import image1 from '../Assests/Carousel/car/1.jpeg'; 
-import image2 from '../Assests/Carousel/car/2.jpeg'; 
-import image3 from '../Assests/Carousel/car/3.jpeg'; 
-import image4 from '../Assests/Carousel/car/4.jpeg'; 
-import image5 from '../Assests/Carousel/car/5.jpeg'; 
-import image6 from '../Assests/Carousel/car/6.jpeg'; 
-import image7 from '../Assests/Carousel/car/7.png'; 
-import image8 from '../Assests/Carousel/car/8.png'; 
-import image9 from '../Assests/Carousel/car/9.jpeg'; 
-import image10 from '../Assests/Carousel/car/10.png'; 
+import image1 from '../Assests/Carousel/car/1.jpeg';
+import image2 from '../Assests/Carousel/car/2.jpeg';
+import image3 from '../Assests/Carousel/car/3.jpeg';
+import image4 from '../Assests/Carousel/car/4.jpeg';
+import image5 from '../Assests/Carousel/car/5.jpeg';
+import image6 from '../Assests/Carousel/car/6.jpeg';
+import image7 from '../Assests/Carousel/car/7.png';
+import image8 from '../Assests/Carousel/car/8.png';
+import image9 from '../Assests/Carousel/car/9.jpeg';
+import image10 from '../Assests/Carousel/car/10.png';
 import CommonModal from '../Utility/Modal';
 
 const SlidingGallery = () => {
@@ -23,6 +23,7 @@ const SlidingGallery = () => {
     setDialogHeader(header);
     onOpen();
   };
+
   const settings = {
     dots: false,
     infinite: true,
@@ -51,9 +52,19 @@ const SlidingGallery = () => {
     ]
   };
 
+  useEffect(() => {
+    // To ensure the modal opens every 2 minutes
+    const intervalId = setInterval(() => {
+      setDialogHeader('Auto Open Modal');
+      onOpen();
+    }, 2 * 60 * 1000); // 2 minutes
+
+    return () => clearInterval(intervalId);
+  }, [onOpen]);
+
   return (
-    <div className="bg-black py-8" id="gallery">
-      <div className="max-w-8xl mx-auto">
+    <div className="bg-black py-8" id="gallery" style={{ overflow: 'hidden' }}>
+      <div className="max-w-7xl mx-auto px-2">
         <Slider {...settings}>
           <div className="px-2">
             <img src={image1} alt="Image 1" />
@@ -74,16 +85,16 @@ const SlidingGallery = () => {
             <img src={image6} alt="Image 6" />
           </div>
           <div className="px-2">
-            <img src={image7} alt="Image 6" />
+            <img src={image7} alt="Image 7" />
           </div>
           <div className="px-2">
-            <img src={image8} alt="Image 6" />
+            <img src={image8} alt="Image 8" />
           </div>
           <div className="px-2">
-            <img src={image9} alt="Image 6" />
+            <img src={image9} alt="Image 9" />
           </div>
           <div className="px-2">
-            <img src={image10} alt="Image 6" />
+            <img src={image10} alt="Image 10" />
           </div>
         </Slider>
       </div>

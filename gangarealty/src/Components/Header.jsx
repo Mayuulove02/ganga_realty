@@ -79,7 +79,7 @@ const Header = () => {
           <p className="text-4xl font-bold text-[#fbad5a]"></p>
           <p className="text-xl text-[#fbad5a] "> 10 Elevators in a tower</p>
         </div>
-        <div className="bg-white bg-opacity-60 p-6 rounded-lg shadow-lg md:w-1/3 mt-8 md:mt-0">
+        <div className="bg-white bg-opacity-30 p-6 rounded-lg shadow-lg md:w-1/3 mt-8 md:mt-0">
           <h2 className="text-xl font-bold mb-4 italic">Hurry! Limited units are available</h2>
           <form className="space-y-4" ref={form} onSubmit={sendEmail}>
             <input
@@ -103,7 +103,7 @@ const Header = () => {
             <input type="hidden" name="source" value="Ganga_Realty_fusion85" />
             <button
               type="submit"
-              className="w-full bg-[#fbad5a] text-white p-2 rounded-full"
+              className="w-full bg-[#fbad5a] text-white p-2 rounded"
               isLoading={isSubmitting}
             >
               Submit

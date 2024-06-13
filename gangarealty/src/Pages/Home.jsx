@@ -1,7 +1,6 @@
 import React from 'react'
 import Navbar from '../Components/Navbar'
 import Header from '../Components/Header'
-import StickyBrochure from "../Utility/StickyBrochure";
 import StickyButton from "../Utility/StickyButton";
 import About from '../Components/About';
 import Features from '../Components/Features';
@@ -12,12 +11,13 @@ import Location from '../Components/Location';
 import Contact from '../Components/Contact';
 import Footer from '../Components/Footer';
 import SlidingGallery from '../Components/SlidingGallery';
+import ReloadModal from '../Utility/ReloadModal';
 
 const Home = () => {
   return (
     <div>
-        <StickyBrochure />
         <StickyButton />
+        <ReloadModal />
         <Navbar />
         <Header />
         <About />

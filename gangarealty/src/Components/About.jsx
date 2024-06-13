@@ -13,7 +13,7 @@ const About = () => {
   };
   return (
     <section id='about' className="bg-white-100 p-12 text-center italic">
-      <p className="text-lg py-2 font-semibold transition duration-300 mt-4 text-[#c27b7f]">WELCOME TO</p>
+      <p className="text-lg py-2 font-semibold transition duration-300 mt-4 text-[#fbad5a]">WELCOME TO</p>
       <h2 className="text-3xl font-bold text-center mb-2 text-[#2f4858] italic">Ganga Realty Unveils <span className='text-[#fbad5a]'>Fusion 85</span></h2>
       {/* <img src={arrow} alt='arrow' className='m-auto mb-8 text-red' width={200} /> */}
       <div className="flex flex-col md:flex-row items-center justify-between max-w-6xl mx-auto mt-12">
