@@ -1,6 +1,6 @@
 import emailjs from '@emailjs/browser';
 import React, { useRef, useState } from 'react';
-import { Checkbox, Text, useMediaQuery, useToast } from '@chakra-ui/react';
+import { Checkbox, Input, Text, useMediaQuery, useToast } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 import backgroundImage from "../Assests/bg.jpg";
 import logo from "../Assests/logo.jpeg";
@@ -29,12 +29,26 @@ const Contact = () => {
             });
             return;
         }
+        const phonePattern = /^[6-9]\d{9}$/;
+        const phoneNumber = form.current["user_phone"].value;
+
+        if (!phonePattern.test(phoneNumber)) {
+            toast({
+                title: "Invalid phone number",
+                description: "Phone number must be 10 digits long and start with 6.",
+                status: "error",
+                duration: 5000,
+                isClosable: true,
+            });
+            return;
+        }
+
 
         setIsSubmitting(true);
 
         emailjs
             .sendForm("service_bnqs3nf", "template_6znyofw", form.current, {
-                publicKey: "hXacqdARHtDVnkvDa",
+                publicKey: "3q48ooOOxL1LhxMEE",
             })
             .then(
                 () => {
@@ -56,9 +70,15 @@ const Contact = () => {
                 }
             );
     };
+    const handlePhoneInput = (e) => {
+        const value = e.target.value;
+        if (!/^[6-9]\d{0,9}$/.test(value)) {
+            e.target.value = value.slice(0, -1);
+        }
+    };
 
     return (
-        <section id='contact' className="bg-[#F8F8F8] p-12 text-center italic" 
+        <section id='contact' className="bg-[#F8F8F8] p-12 text-center italic"
             style={{ backgroundImage: `url(${backgroundImage})`, backgroundPosition: "center" }}
         >
             <p className="text-lg py-2 font-semibold transition duration-300 mt-4 text-[#fbad5a] md:text-base sm:text-sm">Ganga Realty Fusion 85</p>
@@ -85,8 +105,12 @@ const Contact = () => {
                             />
                             <input
                                 type="text"
-                                placeholder="Phone Number"
+                                size="md"
                                 name="user_phone"
+                                placeholder="Phone Number"
+                                required
+                                pattern="^[6-9]\d{9}$"
+                                onInput={handlePhoneInput}
                                 className="w-full p-2 border border-gray-300 rounded-lg"
                             />
                             <input

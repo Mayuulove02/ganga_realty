@@ -57,6 +57,20 @@ const CommonModal = ({ isOpen, onClose, headerText }) => {
       return;
     }
 
+    const phonePattern = /^[6-9]\d{9}$/;
+    const phoneNumber = form.current["user_phone"].value;
+
+    if (!phonePattern.test(phoneNumber)) {
+      toast({
+        title: "Invalid phone number",
+        description: "Phone number must be 10 digits long and start with 6.",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+      });
+      return;
+    }
+
     setIsSubmitting(true);
 
     emailjs
@@ -85,10 +99,17 @@ const CommonModal = ({ isOpen, onClose, headerText }) => {
       );
   };
 
+  const handlePhoneInput = (e) => {
+    const value = e.target.value;
+    if (!/^[6-9]\d{0,9}$/.test(value)) {
+      e.target.value = value.slice(0, -1);
+    }
+  };
+
   const formContent = (
     <form ref={form} onSubmit={modalEmail}>
       <Box borderRadius="20px" mt={isMobile ? 0 : 0}>
-        <Box  borderRadius="lg" p={8} >
+        <Box borderRadius="lg" p={8}>
           <Box color="white">
             <VStack spacing={4}>
               <FormControl id="name">
@@ -106,7 +127,14 @@ const CommonModal = ({ isOpen, onClose, headerText }) => {
                   <InputLeftElement pointerEvents="none">
                     <BsFillTelephoneFill color="gray.800" />
                   </InputLeftElement>
-                  <Input type="number" size="md" name="user_phone" required />
+                  <Input 
+                    type="text" 
+                    size="md" 
+                    name="user_phone" 
+                    required 
+                    pattern="^[6-9]\d{9}$"
+                    onInput={handlePhoneInput} 
+                  />
                 </InputGroup>
               </FormControl>
               <FormControl id="email">

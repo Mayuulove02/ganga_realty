@@ -6,7 +6,7 @@ import { LiaWhatsapp } from "react-icons/lia";
 import { BiSolidPhoneCall } from "react-icons/bi";
 
 function App() {
-  const [isMobile] = useMediaQuery('(max-width: 768px)');
+  const [isMobile] = useMediaQuery('(max-width: 920px)');
   return (
     <div className="App">
       <AllRoutes />
@@ -16,12 +16,12 @@ function App() {
             <div className="landing-number-box-2">
               <ButtonGroup gap={2}>
                 <Button  w={"140px"} bg={"#f4ab0f"}>
-                  <Link to="https://api.whatsapp.com/send?phone=+918178593744&text=Hi&utm_source=website+banner" className="landing-number-2" target='_blank'>
+                  <Link to="https://api.whatsapp.com/send?phone=+917015227683&text=Hi&utm_source=website+banner" className="landing-number-2" target='_blank'>
                     <Text display={"flex"} color={"green"} gap={"5px"}><LiaWhatsapp color='green' size={"22"}/>Whatsapp</Text>
                   </Link>
                 </Button>
                 <Button w={"140px"} bg={"#f4ab0f"} >
-                  <Link to="tel:+918178593744" className="landing-number-2">
+                  <Link to="tel:+917015227683" className="landing-number-2">
                     <Text display={"flex"} color={"blue"} gap={"5px"}><BiSolidPhoneCall color='blue' size={"22"}/>Call Now</Text>
                   </Link>
                 </Button>

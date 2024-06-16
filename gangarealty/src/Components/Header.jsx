@@ -1,6 +1,6 @@
 import emailjs from '@emailjs/browser';
 import React, { useRef, useState } from 'react';
-import { useMediaQuery, useToast } from '@chakra-ui/react';
+import { Input, useMediaQuery, useToast } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 import backgroundVideo from '../Assests/Header/bg.mp4'; // Make sure to add your video file in this path
 
@@ -28,6 +28,19 @@ const Header = () => {
       });
       return;
     }
+    const phonePattern = /^[6-9]\d{9}$/;
+        const phoneNumber = form.current["user_phone"].value;
+
+        if (!phonePattern.test(phoneNumber)) {
+            toast({
+                title: "Invalid phone number",
+                description: "Phone number must be 10 digits long and start with 6.",
+                status: "error",
+                duration: 5000,
+                isClosable: true,
+            });
+            return;
+        }
 
     setIsSubmitting(true);
 
@@ -55,6 +68,13 @@ const Header = () => {
         }
       );
   };
+  const handlePhoneInput = (e) => {
+    const value = e.target.value;
+    if (!/^[6-9]\d{0,9}$/.test(value)) {
+        e.target.value = value.slice(0, -1);
+    }
+};
+
 
   return (
     <header
@@ -88,12 +108,16 @@ const Header = () => {
               name="user_name"
               className="w-full p-2 border border-gray-300 rounded-lg"
             />
-            <input
-              type="text"
-              placeholder="Phone Number"
-              name="user_phone"
-              className="w-full p-2 border border-gray-300 rounded-lg"
-            />
+            <input 
+                    type="text" 
+                    size="md" 
+                    name="user_phone" 
+                    placeholder="Phone Number"
+                    required 
+                    pattern="^[6-9]\d{9}$"
+                    onInput={handlePhoneInput}
+                    className="w-full p-2 border border-gray-300 rounded-lg" 
+                  />
             <input
               type="email"
               placeholder="Email"
